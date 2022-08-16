@@ -7,7 +7,7 @@ pub fn init() {
     "font_helper=debug, finder=debug, libfonthelper=debug, simple_server=info",
   )
   .log_to_file()
-  .directory("/var/log/fonthelper")
+  .directory(dirs::config_dir().unwrap().join("figma-font-helper/log").display().to_string())
   .format(opt_format)
   .start()
   .unwrap();
