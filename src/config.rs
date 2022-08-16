@@ -2,7 +2,7 @@ use log::warn;
 use serde::{Deserialize, Serialize};
 use serde_json;
 use std::fmt;
-use std::{fs, path::Path};
+use std::fs;
 
 pub struct Config {
   pub host: String,
