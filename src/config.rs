@@ -47,11 +47,11 @@ impl Config {
   }
 
   fn parse_config_file() -> ConfigFile {
-    let path = Path::new("/etc/figma-linux/fonthelper");
+    let path = dirs::config_dir().unwrap().join("figma-font-helper");
 
     let mut config = ConfigFile {
       port: "18412".to_owned(),
-      directories: vec![String::from("/usr/share/fonts")],
+      directories: vec![String::from("/usr/share/fonts"), dirs::font_dir().unwrap().display().to_string()],
     };
 
     if path.exists() {
