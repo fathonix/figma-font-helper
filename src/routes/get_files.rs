@@ -18,7 +18,7 @@ fn handler(_: Request<Vec<u8>>, mut response: ResponseBuilder, config: &Config) 
       )
     }
     Ok(fonts) => {
-      let mut json = "{\"version\": 4,\"fontFiles\":".to_string();
+      let mut json = "{\"version\": 20,\"fontFiles\":".to_string();
       json.push_str(&fonts.to_json());
       json.push_str("}");
 
