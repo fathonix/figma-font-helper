@@ -7,7 +7,10 @@ pub fn init() {
     "font_helper=debug, finder=debug, libfonthelper=debug, simple_server=info",
   )
   .log_to_file()
-  .directory(dirs::config_dir().unwrap().join("figma-font-helper/log").display().to_string())
+  .directory(
+    dirs::config_dir()
+      .expect("Unable to retrieve the config directory")
+      .join("figma-font-helper/log"))
   .format(opt_format)
   .start()
   .unwrap();
