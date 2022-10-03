@@ -47,11 +47,19 @@ impl Config {
   }
 
   fn parse_config_file() -> ConfigFile {
-    let path = dirs::config_dir().unwrap().join("figma-font-helper");
+    let path = dirs::config_dir()
+      .expect("Unable to retrieve the config directory")
+      .join("figma-font-helper");
 
     let mut config = ConfigFile {
       port: "18412".to_owned(),
-      directories: vec![String::from("/usr/share/fonts"), dirs::font_dir().unwrap().display().to_string()],
+      directories: vec![
+        String::from("/usr/share/fonts"),
+        dirs::font_dir()
+          .expect("Unable to retrieve the font directory")
+          .to_string_lossy()
+          .into_owned()
+      ],
     };
 
     if path.exists() {
